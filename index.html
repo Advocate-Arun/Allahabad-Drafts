@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- script to mobile number starts -->
+    <script>
+           // Add an event listener to validate the mobile number when the form is submitted
+           document.querySelector('form').addEventListener('submit', function (event) {
+            const mobileInput = document.getElementById('mobile');
+            const mobileRegex = /^[0-9]{10}$/;
+
+            if (!mobileRegex.test(mobileInput.value)) {
+                alert('Please enter a valid 10-digit mobile number.');
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+<!-- script to mobile number starts -->
+
+<!-- xss to voice hindi starts -->
+
+<!-- css to voice hindi ends -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Station Form</title>
+</head>
+<body>
+    <form action="voice complaint.php" method="POST">
+        <label for="state">Select State:</label>
+        <select id="state" name="state" onchange="updateCities()">
+            <option value="">अपना राज्य चुने:</option>
+            <option value="uttar_pradesh">उत्तर प्रदेश</option>
+            <!-- Add other state options here -->
+        </select>
+
+        <br>
+
+        <label for="city">अपना जिला चुने:</label>
+        <select id="city" name="city" onchange="updatePoliceStations()">
+            <!-- Cities will be dynamically populated based on the selected state -->
+        </select>
+
+        <br>
+
+        <label for="policeStation">अपना थाना चुने:</label>
+        <select id="policeStation" name="policeStation">
+            <!-- Police stations will be dynamically populated based on the selected city -->
+        </select>
+
+        <br>
+
+        <label for="policeStation">अपना अधिकारी चुने:</label>
+        <select name="officer">
+            <option value="पुलिस आयुक्त">पुलिस आयुक्त</option>
+            <option value="पुलिस उपायुक्त">पुलिस उपायुक्त</option>
+            <option value="सहायक पुलिस आयुक्त">सहायक पुलिस आयुक्त</option>
+            <option value="थानाध्यक्ष">थानाध्यक्ष</option>
+            <option value="जिलाधिकारी">जिलाधिकारी</option>
+            <option value="उप-जिलाधिकारी">उप-जिलाधिकारी</option>
+          </select>
+          
+
+        <br>
+        <label for="mobile">प्रार्थना पत्र का विषय :</label>
+        <input type="text" id="" name="subject" title="प्रार्थी का नाम " required>
+        <br>
+        <label for="mobile">प्रार्थी का नाम :</label>
+        <input type="text" id="" name="applicant" title="प्रार्थी का नाम " required>
+        <br>
+        <label for="mobile">प्रार्थी के पिता का नाम  :</label>
+        <input type="text" id="" name="appfather" title="प्रार्थी के पिता का नाम " required>
+        <br>
+        <label for="mobile">प्रार्थी का पता :</label>
+        <input type="text" id="" name="address" title="प्रार्थी के पिता का नाम " required>
+        <br>
+        <label for="mobile">मोबाइल नंबर:</label>
+        <input type="text" id="mobile" name="mobile" pattern="[0-9]{10}" title="Enter a 10-digit mobile number" required>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function updateCities() {
+            // Logic to dynamically populate the city dropdown based on the selected state
+            const stateSelect = document.getElementById('state');
+            const citySelect = document.getElementById('city');
+
+            // Clear previous options
+            citySelect.innerHTML = '';
+
+            // Add new options based on the selected state
+            const selectedState = stateSelect.value;
+
+            // You can add more logic to fetch cities based on the selected state
+            if (selectedState === 'uttar_pradesh') {
+                const citiesInUttarPradesh = ['आगरा', 'अलीगढ', 'खैर', 'प्रयागराज', 'अम्बेडकरनगर', 'औरैया', 'आजमगढ', 'बागपत[मृत कड़ियाँ]', 'बहराइच', 'बलिया', 'बलरामपुर', 'बाँदा', 'बाराबंकी', 'बरेली', 'बस्ती', 'बिजनौर', 'बदायूँ', 'बुलंदशहर', 'चंदौली', 'चित्रकूट', 'देवरिया', 'एटा', 'इटावा', 'अयोध्या', 'फ़र्रूख़ाबाद', 'फतेहपुर', 'फ़िरोजाबाद', 'गौतमबुद्ध नगर', 'गाजियाबाद', 'ग़ाज़ीपुर', 'गोंडा', 'गोरखपुर', 'हमीरपुर', 'हरदोई', 'हाथरस', 'जलौन', 'जौनपुर', 'झाँसी', 'ज्योतिबा फुले नगर', 'कन्नौज', 'कानपुर देहात', 'कानपुर नगर', 'कौशाम्बी', 'कुशीनगर (पड़रौना)', 'लखीमपुर-खिरी', 'ललितपुर', 'लखनऊ', 'महाराजगंज', 'महोबा', 'मैनपुरी', 'मथुरा', 'मऊ', 'मेरठ', 'मिर्ज़ापुर', 'मुरादाबाद', 'मुजफ्फरनगर', 'पीलीभीत', 'प्रतापगढ', 'रायबरेली', 'रामपुर', 'सहारनपुर', 'संत कबीरनगर', 'भदोही', 'शाहजहाँपुर', 'श्रावस्ती', 'सिद्धार्थनगर', 'सीतापुर', 'सोनभद्र', 'सुल्तानपुर', 'उन्नाव', 'वाराणसी'];
+                citiesInUttarPradesh.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.text = city;
+                    citySelect.appendChild(option);
+                });
+            }
+            // Add similar logic for other states
+
+            // Call the updatePoliceStations function to update the police station dropdown based on the selected city
+            updatePoliceStations();
+        }
+
+        function updatePoliceStations() {
+            // Logic to dynamically populate the police station dropdown based on the selected city
+            const citySelect = document.getElementById('city');
+            const policeStationSelect = document.getElementById('policeStation');
+
+            // Clear previous options
+            policeStationSelect.innerHTML = '';
+
+            // Add new options based on the selected city
+            const selectedCity = citySelect.value;
+
+            // You can add more logic to fetch police stations based on the selected city
+            if (selectedCity === 'आगरा') {
+                const policeStationsInAgra = ['थाना कोतवाली', 'थाना छत्ता बाजार', 'थाना सदर बाज़ार', 'महिला थाना रकाबगंज', 'थाना हरिपर्वत', 'थाना जगदीशपुरा', 'थाना लोहा मंडी', 'थाना एम एम गेट', 'थाना मंटोला', 'थाना नाई कि मंडी', 'थाना न्यू आगरा', 'थाना शाहगंज', 'थाना सिकंदरा', 'थाना एत्माउदौलाह', 'थाना ताजगंज', 'थाना रकाबगंज', 'थाना फतेहाबाद', 'थाना एत्मादपुर', 'थाना फतेहपुर सीकरी', 'थाना कागारौल', 'थाना खंदौली', 'थाना सैयां', 'थाना अछनेरा', 'थाना शमसाबाद', 'थाना डोंकी', 'थाना जैतपुर', 'थाना खेरागढ़', 'थाना बाह', 'थाना मालपुरा', 'थाना बरहन', 'थाना निबोहरा', 'थाना जगनेर', 'थाना बंसई जगनेर', 'थाना बसोनी', 'थाना पिनाहट', 'थाना मनसुखपुरा', 'थाना रिठोरा', 'थाना बंसई अरेला', 'थाना खेरा राठोर', 'थाना इरादतनगर', 'थाना ट्रांस यमुना', 'थाना कमला नगर', 'थाना पर्यटन', 'थाना ताज सुरक्षा', 'थाना बमरौली कटारा', 'थाना चित्राहट', 'थाना किरावली'];
+                policeStationsInAgra.forEach(station => {
+                    const option = document.createElement('option');
+                    option.value = station;
+                    option.text = station;
+                    policeStationSelect.appendChild(option);
+                });
+            }
+            
+            // Add similar logic for other cities
+            if (selectedCity === 'अलीगढ') {
+                const policeStationsInAgra = ['थाना अकराबाद', 'थाना अतरोली', 'थाना बनादेवी', 'थाना बरला', 'थाना चन्डोस', 'थाना छारा', 'थाना सिविल लाइन', 'थाना दंदों', 'थाना देल्ही गेट', 'थाना गंगीरी', 'थाना गभाना', 'थाना गाँधी पार्क', 'थाना गोंडा', 'थाना हरदुआगंज', 'थाना इगलास', 'थाना जवां', 'थाना खैर', 'थाना कोतवाली', 'थाना क्वार्सी', 'थाना लोधा', 'थाना मडराक', 'थाना पाली मुकीमपुर', 'थाना पिसावां', 'थाना सासनी गेट', 'थाना टप्पल', 'थाना विजयगढ़', 'थाना माहिला थाना', 'थाना गोधा', 'थाना रोरावर', 'थाना महुआ खेडा'];
+                policeStationsInAgra.forEach(station => {
+                    const option = document.createElement('option');
+                    option.value = station;
+                    option.text = station;
+                    policeStationSelect.appendChild(option);
+                });
+            }
+
+             // Add similar logic for other cities
+             if (selectedCity === 'प्रयागराज') {
+                const policeStationsInAgra = ['थाना खुल्दाबाद', 'थाना कोतवाली', 'थाना शाहगंज', 'थाना कैंट', 'थाना सिविल लाइन्स', 'थाना महिला थाना', 'थाना शिवकुटी', 'थाना एयरपोर्ट', 'थाना धूमनगंज', 'थाना पूरामुफ्ती', 'थाना अतरसुइया', 'थाना करेली', 'थाना मुट्ठीगंज', 'थाना कर्नलगंज', 'थाना जॉर्जटाउन', 'थाना कीडगंज', 'थाना दारागंज', 'थाना झूंसी', 'थाना हण्डिया', 'थाना सराय ममरेज', 'थाना उतरांव', 'थाना बहरिया', 'थाना मउआइमा', 'थाना फूलपुर', 'थाना होलागढ़', 'थाना नवाबगंज', 'थाना सोरांव', 'थाना फाफामऊ', 'थाना सराय इनायत', 'थाना थरवई', 'थाना औ0 क्षेत्र', 'थाना करछना', 'थाना नैनी', 'थाना कोरांव', 'थाना मांडा', 'थाना मेजा', 'थाना बारा', 'थाना लालापुर', 'थाना शंकरगढ़', 'थाना घूरपुर', 'थाना कौंधियारा', 'थाना खीरी'];
+                policeStationsInAgra.forEach(station => {
+                    const option = document.createElement('option');
+                    option.value = station;
+                    option.text = station;
+                    policeStationSelect.appendChild(option);
+                });
+            }
+            
+        }
+    </script>
+
+
+<!-- javascript for voice complaint typing starts -->
+
+<!-- javascript for voice complaint typing ends -->
+</body>
+</html>

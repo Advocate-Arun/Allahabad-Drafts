@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindi Voice Typing</title>
+</head>
+<body>
+    <h1>हिंदी आवाज टाइपिंग</h1>
+    
+    <input type="text" id="textInput" placeholder="यहाँ आपकी आवाज से टाइप करें">
+
+    <button onclick="startVoiceTyping()">आवाज टाइपिंग शुरू करें</button>
+    
+    <script>
+        function startVoiceTyping() {
+            const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+            recognition.lang = 'hi-IN'; // Set language to Hindi
+
+            recognition.onstart = function() {
+                console.log('Speech recognition started');
+            };
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                updateInput(transcript);
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            recognition.onend = function() {
+                console.log('Speech recognition ended');
+            };
+
+            recognition.start();
+        }
+
+        function updateInput(text) {
+            const inputElement = document.getElementById('textInput');
+            inputElement.value = text;
+        }
+    </script>
+</body>
+</html>

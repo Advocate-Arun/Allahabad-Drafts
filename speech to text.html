@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Box</title>
+</head>
+<body>
+    <h1>Complaint Box</h1>
+    <textarea id="complaintText" placeholder="Type your complaint..."></textarea>
+    <button onclick="analyzeComplaint()">Analyze Complaint</button>
+    <div id="legalSections"></div>
+
+    <script>
+        function analyzeComplaint() {
+            const complaintText = document.getElementById('complaintText').value;
+            const legalSections = suggestLegalSections(complaintText);
+
+            // Display suggested legal sections
+            const legalSectionsDiv = document.getElementById('legalSections');
+            legalSectionsDiv.innerHTML = `<strong>Suggested Legal Sections:</strong><br>${legalSections.join('<br>')}`;
+        }
+
+        function suggestLegalSections(complaintText) {
+            // Simulate a basic analysis by searching Google for relevant legal sections.
+            // In a real-world scenario, you would need a more sophisticated solution.
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(complaintText + ' legal sections')}`;
+            window.open(googleSearchUrl, '_blank');
+
+            // Simulate suggested legal sections
+            return ['Section 1', 'Section 2', 'Section 3'];
+        }
+    </script>
+</body>
+</html>
+
